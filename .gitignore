@@ -1,4 +1,6 @@
 AGpython/
 .vscode/
 __pycache__/
-/teste/*.jpg
+
+
+teste/*.jpg
