@@ -3,10 +3,8 @@ import hiperparametros as hp
 import decodeecontrole as dc
 
 def seleciona(Populacao):
-    """seleciona individuos da população aleatoriamente e devolve o melhor"""
-
+    """Seleciona individuos da população aleatoriamente e devolve o melhor"""
     Selecao = list()
-
     inds = list()
     i = 0
 
@@ -25,15 +23,14 @@ def seleciona(Populacao):
 
 
 def elitismo(Populacao, NewPOP, MelhoresInd):
-    """Escolhe o melhor individou e passa para a próxima geração"""
+    """Escolhe o melhor indivíduo e o passa para a próxima geração"""
     Populacao = sorted(Populacao, key=lambda i: i['fitness'], reverse=True)
     NewPOP.append(Populacao[0])
     MelhoresInd.append(Populacao[0])
-    return NewPOP, MelhoresInd
 
 
 def mutacao(gene):
-    """Muta, com uma chance de 50%, os bits para o valor oposto"""
+    """Muta os bits para o valor oposto com base em uma taxa de mutação"""
     for i, b in enumerate(gene):
         if random.random() > hp.TAXA_MUTACAO:
             gene[i] = abs(gene[i]-1)
@@ -62,17 +59,13 @@ def cruzamento(pai1, pai2):
         pai1['Ybin'][pontos[0]:pontos[1]] + pai2['Ybin'][pontos[1]:]
     filho2['Ybin'] = mutacao(aux)
 
-    dc.limiar(filho1['Xbin'])
-    dc.limiar(filho1['Ybin'])
-    dc.limiar(filho2['Xbin'])
-    dc.limiar(filho2['Ybin'])
+    dc.indLimits(filho1)
+    dc.indLimits(filho2)
 
-    filho1['Xdec'] = dc.decode(filho1['Xbin'])
-    filho1['Ydec'] = dc.decode(filho1['Ybin'])
+    dc.indDecode(filho1)
     filho1['fitness'] = dc.calc(filho1['Xdec'], filho1['Ydec'])
 
-    filho2['Xdec'] = dc.decode(filho2['Xbin'])
-    filho2['Ydec'] = dc.decode(filho2['Ybin'])
+    dc.indDecode(filho2)
     filho2['fitness'] = dc.calc(filho2['Xdec'], filho2['Ydec'])
 
     return filho1, filho2
@@ -81,7 +74,7 @@ def cruzamento(pai1, pai2):
 def novaPop(NewPOP, nElementos, Populacao, MelhoresInd):
     NewPOP.clear()
     elitismo(Populacao, NewPOP, MelhoresInd)
-  
+
     while len(NewPOP) < nElementos:
         p1 = seleciona(Populacao)
         p2 = seleciona(Populacao)
