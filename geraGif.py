@@ -2,7 +2,6 @@ from PIL import Image
 import os
 import glob
 
-
 frames = list()
 files = glob.glob("./graficos/*.png")
 files.sort(key=os.path.getmtime)

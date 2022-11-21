@@ -4,8 +4,8 @@ import gerarnovapopulacao as Newpop
 import decodeecontrole as dc
 import PrimeiraPOP
 
-nElementos = 200
-geracoes = 200
+nElementos = int(input('Quantos indivíduos por geração? '))
+geracoes = int(input('Quantas gerações? '))
 
 
 Populacao = list()
@@ -14,9 +14,10 @@ MelhoresInd = list()
 
 
 PrimeiraPOP.PopulacaoInicial(nElementos, Populacao)
+
 imagens.limpaHistorico()
 
-#Evolução
+#Iterações até a o número de gerações
 for g in range(geracoes):
     if g%hp.quantidadeDeImagens(geracoes) == 0:
         imagens.imgGeracao(Populacao, g)

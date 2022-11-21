@@ -2,6 +2,8 @@ from random import randint
 import decodeecontrole as dc
 
 def PopulacaoInicial(nElementos, Populacao):
+    """Gera a população inicial
+        nElementos: Quantidade de elementos na geração"""
     for i in range(nElementos):
         individuo = {'Xbin': gerarGene(), 'Ybin': gerarGene(),
                     'Xdec': 0.0, 'Ydec': 0.0, 'fitness': 0.0}

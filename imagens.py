@@ -11,6 +11,7 @@ def limpaHistorico():
 
 def imgGeracao(Populacao, g):
     """Gera e salva um gráfico de dispersão dos indivíduos da população atual"""
+    
     listX = list()
     listY = list()
     for ind in Populacao:
