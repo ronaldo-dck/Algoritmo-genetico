@@ -32,6 +32,7 @@ def GraficoEvolucaoDoFitness(MelhoresInd):
     dados = []
     for i, ind in enumerate(MelhoresInd):
         dados.append(ind['fitness'])
+    print("\n Melhor individuo:\n")
     print(MelhoresInd[-1])
 
     plt.plot(range(len(dados)), dados)
