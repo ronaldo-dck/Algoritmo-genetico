@@ -18,3 +18,14 @@ Maximizar o valor de uma função
 ### Bibliotecas Externas
 
 * matplotlib
+
+
+### Gerar GIF
+
+main.py gera a poncentagem de imagens do total de gerações
+
+exemplo: 25% de imagens de 200 gen gera 50 imagens
+
+para gerar um gif precisa chamar o programa geraGif.py
+
+Que vai varrer a pasta graficos pegando todas as imagens das gerações e gerando um gif, e salvando na pasta de graficos
