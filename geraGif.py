@@ -8,4 +8,4 @@ files.sort(key=os.path.getmtime)
 for file in files:
     frames.append(Image.open(file))
 frame_one = frames[0]
-frame_one.save("./grafico/evolucao.gif", format="GIF", append_images=frames, save_all=True, duration=250, loop=1)
+frame_one.save("./graficos/evolucao.gif", format="GIF", append_images=frames, save_all=True, duration=250, loop=1)
