@@ -24,4 +24,7 @@ for g in range(geracoes):
     NewPOP = Newpop.novaPop(NewPOP, nElementos, Populacao, MelhoresInd)
     Populacao = NewPOP[:]
 
+
+    
+Newpop.elitismo(Populacao,NewPOP, MelhoresInd)
 imagens.GraficoEvolucaoDoFitness(sorted(MelhoresInd, key=lambda i: i['fitness']))

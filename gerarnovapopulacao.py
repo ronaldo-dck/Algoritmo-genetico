@@ -8,15 +8,13 @@ def seleciona(Populacao):
     inds = list()
     i = 0
 
-    if len(Populacao) > 5:
-        while i < 5:
-            num = random.randint(0, len(Populacao)-1)
-            if not (num in inds):
-                inds.append(num)
-                i += 1
-                Selecao.append(Populacao[num])
-    else:
-        Selecao = Populacao[:]
+    while i < 5:
+        num = random.randint(0, len(Populacao)-1)
+        if not (num in inds):
+            inds.append(num)
+            i += 1
+            Selecao.append(Populacao[num])
+
 
     #Ordena a seleção dos melhores para os piores
     Selecao = sorted(Selecao, key=lambda i: i['fitness'], reverse=True)
